@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#100a2b">
+<title>AI Companion 💜</title>
+<style>
+:root{--bg:#0b0820;--panel:#17113a;--panel2:#21184d;--purple:#9657ff;--pink:#f17cff;--text:#f8f4ff;--muted:#b8addb;--line:#382966;--danger:#ff7b9c}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#24124c 0%,var(--bg) 55%);color:var(--text);font-family:system-ui,-apple-system,"Noto Sans Myanmar",sans-serif;min-height:100dvh}
+button,input,select,textarea{font:inherit}button{cursor:pointer;border:0}button:disabled{opacity:.5;cursor:not-allowed}
+.wrap{max-width:760px;margin:auto;min-height:100dvh;padding:16px 14px 90px}.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}.brand{font-weight:800;font-size:21px;letter-spacing:.2px}.brand span{color:#dba6ff}.pill{border:1px solid var(--line);border-radius:99px;padding:7px 10px;color:var(--muted);font-size:12px}
+.panel{background:linear-gradient(145deg,rgba(35,25,78,.96),rgba(17,13,45,.96));border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:0 12px 36px #05031266;margin-bottom:14px}
+h1,h2,h3,p{margin-top:0}h1{font-size:25px;line-height:1.35}h2{font-size:18px;margin-bottom:12px}p{color:var(--muted);line-height:1.65}.hero{text-align:center;padding:22px 18px}.avatar{width:96px;height:96px;border-radius:50%;margin:0 auto 14px;display:grid;place-items:center;font-size:48px;background:linear-gradient(135deg,#6936d9,#ed79d9);box-shadow:0 0 35px #a34dff66;border:3px solid #d8a6ff}
+.btn{border-radius:14px;padding:12px 15px;color:white;font-weight:700;background:linear-gradient(100deg,#7c3ff1,#bb58ef);width:100%;box-shadow:0 5px 18px #6b37db44}.btn.secondary{background:#21194a;border:1px solid #473274;box-shadow:none}.btn.google{background:#fff;color:#29213a;box-shadow:none}.btn.danger{background:#51213f;border:1px solid #873c66;box-shadow:none}.stack{display:grid;gap:10px}.field{display:grid;gap:6px;margin-bottom:12px}.field label{font-size:13px;color:#d9c9ff}.field input,.field select,.field textarea{width:100%;background:#100d2b;color:var(--text);border:1px solid #483674;border-radius:12px;padding:12px;outline:none}.field input:focus,.field select:focus,.field textarea:focus{border-color:#bb7bff}.hint{font-size:12px;color:var(--muted)}.hidden{display:none!important}.tabs{display:flex;gap:8px;margin-bottom:14px}.tab{flex:1;background:#18123b;border:1px solid var(--line);border-radius:13px;padding:10px 4px;color:var(--muted);font-size:13px}.tab.active{background:#48217d;color:white;border-color:#a56aff}
+.chatbox{height:min(48dvh,430px);overflow:auto;display:flex;flex-direction:column;gap:10px;padding:6px 1px 12px}.bubble{max-width:88%;padding:11px 13px;border-radius:16px;line-height:1.55;white-space:pre-wrap;overflow-wrap:anywhere}.bubble.ai{align-self:flex-start;background:#211b50;border:1px solid #382d6a;border-bottom-left-radius:5px}.bubble.me{align-self:flex-end;background:linear-gradient(135deg,#7439df,#9d4de5);border-bottom-right-radius:5px}.bubble small{display:block;color:#d4c5ff;font-size:10px;margin-top:4px}.composer{display:flex;gap:8px;align-items:end}.composer textarea{flex:1;resize:none;min-height:46px;max-height:110px;background:#100d2b;color:white;border:1px solid #493677;border-radius:14px;padding:12px;outline:none}.send{width:48px;height:46px;border-radius:14px;background:linear-gradient(135deg,#7c3ff1,#bb58ef);color:white;font-size:20px}.item{padding:12px;border:1px solid var(--line);border-radius:13px;margin:8px 0;background:#120e30}.item strong{display:block;margin-bottom:4px}.row{display:flex;gap:8px}.row>*{flex:1}.smallbtn{width:auto;padding:8px 11px;font-size:12px}.bottomnote{text-align:center;font-size:11px;color:#8e81b6;margin-top:18px}.status{font-size:12px;color:#d3baff;min-height:18px;margin:8px 0}.tag{display:inline-block;padding:5px 8px;background:#30215c;color:#ddc9ff;border-radius:99px;font-size:11px;margin:2px}.check{display:flex;gap:8px;align-items:start;font-size:12px;color:var(--muted);margin:10px 0}.divider{text-align:center;color:#8f82b5;font-size:12px;margin:6px}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header class="top"><div class="brand">💜 AI <span>Companion</span></div><div class="pill" id="userPill">ဧည့်သည်</div></header>
+
+  <section id="authView" class="panel">
+    <div class="hero"><div class="avatar">💗</div><h1>မင်းရဲ့ AI အဖော်နဲ့<br>စကားပြောကြမယ်</h1><p>နားထောင်ပေးမယ်၊ စကားပြောပေးမယ်။ မင်းစိတ်ကြိုက် အဖော်တစ်ယောက် ဖန်တီးလိုက်ပါ။</p><span class="tag">မြန်မာ</span><span class="tag">English</span><span class="tag">Memory</span></div>
+    <div class="tabs"><button class="tab active" id="loginTab">အကောင့်ဝင်မယ်</button><button class="tab" id="signupTab">အကောင့်ဖွင့်မယ်</button></div>
+    <form id="authForm">
+      <div class="field"><label for="email">အီးမေးလ်</label><input id="email" type="email" autocomplete="email" placeholder="you@example.com" required></div>
+      <div class="field"><label for="password">စကားဝှက် (အနည်းဆုံး ၆ လုံး)</label><input id="password" type="password" autocomplete="current-password" minlength="6" placeholder="••••••••" required></div>
+      <button class="btn" id="authSubmit">အကောင့်ဝင်မယ်</button>
+    </form>
+    <div class="divider">သို့မဟုတ်</div>
+    <button class="btn google" id="googleBtn">🌐 Google နဲ့ ဝင်မယ်</button>
+    <p class="hint" style="margin:12px 0 0">မှတ်ချက် — ဒီဖိုင်ရဲ့ Demo Login က ဒီဖုန်း browser ထဲမှာပဲ သိမ်းပါတယ်။ တကယ့် Email/Google Authentication မဟုတ်သေးပါ။</p>
+    <div id="authStatus" class="status" role="status"></div>
+  </section>
+
+  <section id="appView" class="hidden">
+    <div class="panel hero"><div class="avatar" id="heroAvatar">🌸</div><h1 id="welcomeTitle">မင်္ဂလာပါ 💜</h1><p id="welcomeText">ဒီနေ့ ဘယ်လိုနေလဲ။ ပြောချင်တာတွေ ပြောလို့ရတယ်နော်။</p><div><span class="tag">AI Companion</span><span class="tag" id="langTag">မြန်မာ + English</span></div></div>
+    <nav class="tabs">
+      <button class="tab active" data-page="chat">💬 Chat</button>
+      <button class="tab" data-page="companion">🌷 အဖော်</button>
+      <button class="tab" data-page="memory">🧠 မှတ်ဉာဏ်</button>
+      <button class="tab" data-page="settings">⚙️</button>
+    </nav>
+    <section id="chatPage" class="panel">
+      <h2 id="chatHeading">💬 စကားပြောခန်း</h2>
+      <div id="chatBox" class="chatbox" aria-live="polite"></div>
+      <div class="composer"><textarea id="message" rows="1" placeholder="ဒီမှာ စာရေးပါ..."></textarea><button id="sendBtn" class="send" aria-label="ပို့မယ်">➤</button></div>
+      <div class="status" id="chatStatus"></div>
+      <p class="hint">AI API မချိတ်ရသေးပါက Demo အဖြေများသာ ပြန်ပါမယ်။</p>
+    </section>
+    <section id="companionPage" class="panel hidden">
+      <h2>🌷 ကိုယ့် AI အဖော်ကို စိတ်ကြိုက်ပြင်မယ်</h2>
+      <div class="field"><label for="compName">အဖော်နာမည်</label><input id="compName" maxlength="32" value="မိုး"></div>
+      <div class="field"><label for="compType">အဖော်ပုံစံ</label><select id="compType"><option value="friend">သူငယ်ချင်း</option><option value="girl">မိန်းကလေးအဖော်</option><option value="boy">ယောက်ျားလေးအဖော်</option></select></div>
+      <div class="field"><label for="personality">စရိုက်</label><select id="personality"><option>နွေးထွေးပြီး နားထောင်ပေးတတ်သူ</option><option>ပျော်ပျော်နေတတ်ပြီး ဟာသကြိုက်သူ</option><option>အေးဆေးပြီး အကြံပေးတတ်သူ</option><option>စာလေ့လာဖော်</option></select></div>
+      <div class="field"><label for="language">စကားပြောဘာသာ</label><select id="language"><option value="both">မြန်မာ + English</option><option value="my">မြန်မာ</option><option value="en">English</option></select></div>
+      <button id="saveComp" class="btn">ပြောင်းလဲမှု သိမ်းမယ်</button><div class="status" id="compStatus"></div>
+    </section>
+    <section id="memoryPage" class="panel hidden">
+      <h2>🧠 အဖော်ရဲ့ မှတ်ဉာဏ်</h2><p>ဒီ Demo မှာ ကိုယ်တိုင်ရေးထည့်ထားတဲ့ မှတ်ဉာဏ်တွေကို ဒီ browser ထဲမှာပဲ သိမ်းထားနိုင်ပါတယ်။</p>
+      <div class="field"><label for="memoryInput">မှတ်ထားစေချင်တာ</label><textarea id="memoryInput" rows="3" placeholder="ဥပမာ — ကျွန်တော်က English လေ့လာနေတယ်။"></textarea></div><button id="addMemory" class="btn">မှတ်ဉာဏ်ထည့်မယ်</button><div id="memoryList"></div>
+      <button id="clearMemory" class="btn danger">မှတ်ဉာဏ်အားလုံး ဖျက်မယ်</button>
+    </section>
+    <section id="settingsPage" class="panel hidden">
+      <h2>⚙️ ဆက်တင်များ</h2><p>လက်ရှိမှာ Demo Mode ဖြစ်ပါတယ်။</p>
+      <div class="item"><strong>အကောင့်</strong><span id="accountLabel" class="hint"></span></div>
+      <div class="item"><strong>AI ချိတ်ဆက်မှု</strong><span class="hint">မချိတ်ရသေး — API Key ကို frontend ထဲ တိုက်ရိုက်မထည့်ပါနဲ့။ လုံခြုံတဲ့ backend လိုအပ်ပါတယ်။</span></div>
+      <button id="exportBtn" class="btn secondary">💾 ဒေတာ Backup ထုတ်မယ်</button><br><br><button id="logoutBtn" class="btn danger">ထွက်မယ်</button>
+    </section>
+  </section>
+  <footer class="bottomnote">Made with 💜 · Demo stores data on this device only</footer>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+const KEY='aiCompanionDemoV1';
+let data=loadData(), authMode='login', currentPage='chat';
+function loadData(){try{return JSON.parse(localStorage.getItem(KEY))||{user:null,companion:{name:'မိုး',type:'friend',personality:'နွေးထွေးပြီး နားထောင်ပေးတတ်သူ',language:'both'},chats:[],memories:[],accounts:[]}}catch(e){return {user:null,companion:{name:'မိုး',type:'friend',personality:'နွေးထွေးပြီး နားထောင်ပေးတတ်သူ',language:'both'},chats:[],memories:[],accounts:[]}}}
+function save(){localStorage.setItem(KEY,JSON.stringify(data))}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function setStatus(id,msg){$(id).textContent=msg}
+function setAuthMode(mode){authMode=mode;$('loginTab').classList.toggle('active',mode==='login');$('signupTab').classList.toggle('active',mode==='signup');$('authSubmit').textContent=mode==='login'?'အကောင့်ဝင်မယ်':'အကောင့်ဖွင့်မယ်';$('password').autocomplete=mode==='login'?'current-password':'new-password';setStatus('authStatus','')}
+$('loginTab').onclick=()=>setAuthMode('login');$('signupTab').onclick=()=>setAuthMode('signup');
+$('authForm').addEventListener('submit',e=>{e.preventDefault();const email=$('email').value.trim().toLowerCase(),pass=$('password').value;if(pass.length<6){setStatus('authStatus','စကားဝှက် အနည်းဆုံး ၆ လုံး ထည့်ပါ။');return}
+let acct=data.accounts.find(a=>a.email===email);
+if(authMode==='signup'){if(acct){setStatus('authStatus','ဒီအီးမေးလ်နဲ့ Demo အကောင့်ရှိပြီးသားပါ။');return}data.accounts.push({email,password:pass});data.user=email;save();showApp()}
+else{if(!acct||acct.password!==pass){setStatus('authStatus','အကောင့်မတွေ့ပါ၊ ဒါမှမဟုတ် စကားဝှက် မမှန်ပါ။ Demo အတွက် အရင် အကောင့်ဖွင့်ပါ။');return}data.user=email;save();showApp()}});
+$('googleBtn').onclick=()=>setStatus('authStatus','Google Login ကို တကယ်အသုံးပြုဖို့ Firebase project နဲ့ Google provider setup လိုပါတယ်။ ဒီ Demo ခလုတ်က login မလုပ်ပေးပါ။');
+function showApp(){ $('authView').classList.add('hidden');$('appView').classList.remove('hidden');$('userPill').textContent='💜 '+(data.user||'Guest');$('accountLabel').textContent=data.user||'';loadCompanion();renderChat();renderMemories();setPage('chat')}
+function logout(){data.user=null;save();$('appView').classList.add('hidden');$('authView').classList.remove('hidden');$('userPill').textContent='ဧည့်သည်'}
+function setPage(p){currentPage=p;['chat','companion','memory','settings'].forEach(n=>$(n+'Page').classList.toggle('hidden',n!==p));document.querySelectorAll('[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===p))}
+document.querySelectorAll('[data-page]').forEach(b=>b.onclick=()=>setPage(b.dataset.page));
+function loadCompanion(){const c=data.companion;$('compName').value=c.name;$('compType').value=c.type;$('personality').value=c.personality;$('language').value=c.language;$('welcomeTitle').textContent='မင်္ဂလာပါ၊ '+c.name+' ပါ 💜';$('langTag').textContent=c.language==='my'?'မြန်မာ':c.language==='en'?'English':'မြန်မာ + English';$('heroAvatar').textContent=c.type==='girl'?'🌸':c.type==='boy'?'🌙':'💗'}
+$('saveComp').onclick=()=>{data.companion={name:$('compName').value.trim()||'မိုး',type:$('compType').value,personality:$('personality').value,language:$('language').value};save();loadCompanion();setStatus('compStatus','သိမ်းပြီးပါပြီ 💜')};
+function renderChat(){const box=$('chatBox');box.innerHTML='';if(!data.chats.length){addBubble('ai','ဟယ်လို 💜 ငါက '+data.companion.name+' ပါ။ ဒီနေ့ ဘယ်လိုနေလဲ။ စကားပြောချင်တာ ပြောလို့ရတယ်နော်။',false)}else data.chats.forEach(m=>addBubble(m.role,m.text,false));box.scrollTop=box.scrollHeight}
+function addBubble(role,text,store=true){const box=$('chatBox'),div=document.createElement('div');div.className='bubble '+(role==='me'?'me':'ai');div.textContent=text;box.appendChild(div);if(store){data.chats.push({role,text,at:Date.now()});save()}box.scrollTop=box.scrollHeight}
+function demoReply(text){const t=text.toLowerCase(),lang=data.companion.language; if(lang==='en')return "I'm here to listen 💜 I'm still in demo mode, so I can't generate a real AI answer yet. Connect a secure AI backend to enable that.";if(/မင်္ဂလာ|ဟိုင်း|hi|hello|ဟယ်လို/.test(t))return 'ဟယ်လို 💜 ပြန်လာလို့ ဝမ်းသာတယ်။ ဒီနေ့ ဘယ်လိုနေလဲ။';if(/ဝမ်းနည်း|စိတ်ညစ်|မပျော်|ပင်ပန်း/.test(t))return 'အဲ့လိုခံစားနေရတာ မလွယ်ဘူးနော် 💜 ပြောချင်တာရှိရင် ဖြည်းဖြည်းချင်း ပြောပြလို့ရတယ်။ ငါ နားထောင်ပေးမယ်။';if(/ချစ်|love/.test(t))return 'မင်းနဲ့ စကားပြောရတာ ဝမ်းသာပါတယ် 💜 ငါက AI အဖော်ဖြစ်ပြီး တကယ့်လူမဟုတ်ပေမယ့် နွေးနွေးထွေးထွေး စကားပြောပေးနိုင်တယ်။';return 'နားလည်ဖို့ ကြိုးစားနေတယ်နော် 💜 ဒီအက်ပ်က အခု Demo Mode ဖြစ်လို့ တကယ့် AI ကို မချိတ်ရသေးဘူး။ AI API ကို လုံခြုံတဲ့ backend နဲ့ ချိတ်ပြီးရင် ပိုသဘာဝကျတဲ့ အဖြေတွေ ရလာမယ်။'}
+function send(){const text=$('message').value.trim();if(!text)return;addBubble('me',text);$('message').value='';setStatus('chatStatus','Demo အဖြေ ပြင်ဆင်နေသည်…');setTimeout(()=>{addBubble('ai',demoReply(text));setStatus('chatStatus','Demo Mode · AI API မချိတ်ရသေးပါ')},350)}
+$('sendBtn').onclick=send;$('message').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send()}});
+function renderMemories(){const list=$('memoryList');list.innerHTML='';if(!data.memories.length){list.innerHTML='<p class="hint">မှတ်ဉာဏ် မရှိသေးပါ။</p>';return}data.memories.forEach((m,i)=>{const div=document.createElement('div');div.className='item';const p=document.createElement('p');p.textContent=m;const b=document.createElement('button');b.className='btn danger smallbtn';b.textContent='ဖျက်';b.onclick=()=>{data.memories.splice(i,1);save();renderMemories()};div.append(p,b);list.appendChild(div)})}
+$('addMemory').onclick=()=>{const v=$('memoryInput').value.trim();if(!v)return;data.memories.push(v);$('memoryInput').value='';save();renderMemories();setStatus('compStatus','');};
+$('clearMemory').onclick=()=>{if(confirm('မှတ်ဉာဏ်အားလုံး ဖျက်မှာ သေချာပါသလား။')){data.memories=[];save();renderMemories()}};
+$('logoutBtn').onclick=logout;
+$('exportBtn').onclick=()=>{const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='ai-companion-backup.json';a.click();URL.revokeObjectURL(url)};
+if(data.user)showApp();
+</script>
+</body>
+</html>
